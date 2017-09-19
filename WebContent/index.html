@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>薄荷糖管理站</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+<script language="JavaScript">
+	var i = 0; 
+	var TextNumber = -1;
+	var TextInput = new Object();
+	var HelpText=""; 
+	var Text = ""; 
+	var Speed=50;
+	var message=0;
+	var addPadding="\r\n";
+	TextInput[0] = "赤赤新电影：超级快递！祝票房一路飙高！"; 
+	TextInput[1] = "2017年，全新跑男将与大家见面！";
+	TextInput[2] = "与谢娜协同主持：拜托了衣橱！";
+	TextInput[3] = "天霸动霸tua！";
+	TextInput[4] = "赤赤有小baby了！英文名：anan";
+	TextInput[5] = "赤赤家里有什么？有狗、有猫、有。。。^(*￣(oo)￣)^";
+	TextInput[6] = "TianC品牌，财运滚滚!";
+	TextInput[7] = "搞事情！";
+	TotalTextInput = 7; 
+	var Version = navigator.appVersion; 
+	if (Version.substring(0, 1)==3)
+	{
+		Speed=200;
+		addPadding="";
+	}
+
+	for (var addPause = 0; addPause <= TotalTextInput; addPause++) 
+	{
+		TextInput[addPause]=addPadding+TextInput[addPause];
+	}
+	var TimerId;
+	var TimerSet=false;
+function nextMessage() 
+{
+	if (!TimerSet)
+	{
+		TimerSet=true;
+		clearTimeout (TimerId);
+		if (TextNumber>=TotalTextInput)
+		{ 
+			alert("已经没有信息了");
+			TimerSet=false;
+		}
+		else
+		{
+			TextNumber+=1;
+			message=TextNumber+1;
+			document.forms[0].elements[2].value= message;
+			Text = TextInput[TextNumber];	
+			HelpText = Text;
+		}
+		teletype();
+	}
+}
+function teletype() 
+{
+	if (TimerSet)
+	{
+		Text=rollMessage();
+		TimerId = setTimeout("teletype()", Speed);
+		document.forms[0].elements[0].value=Text;
+	}
+}
+function rollMessage () 
+{
+	i++;
+	var CheckSpace = HelpText.substring(i-1, i);
+	CheckSpace = "" + CheckSpace;
+	if (CheckSpace == " ") 
+	{i++;}
+	if (i >= HelpText.length+1) 
+	{
+		TimerSet=false;
+		Text = HelpText.substring(0, i);
+		i=0; 
+		return (Text);
+	}
+	Text = HelpText.substring(0, i);
+	return (Text);
+}
+function initTeleType() 
+{
+	Text="\r\n Manual Tele-Type Display";
+	document.forms[0].elements[0].value=Text;
+}
+function lastMessage() 
+{
+	if (!TimerSet && TextNumber!=-1)
+	{
+		TimerSet=true;
+		clearTimeout (TimerId);
+		if (TextNumber<=0)
+		{ 
+			alert("这是最前面了！");
+			TimerSet=false;
+		}
+		else 
+		{
+			TextNumber-=1;
+			message=TextNumber+1;
+			document.forms[0].elements[2].value= message;
+			Text = TextInput[TextNumber];
+			HelpText = Text;
+		} 
+		teletype(); 
+	}
+}
+</script>
+</head>
+<body> 
+	<div class="container">
+		<div class="header" id="home">	
+			<div class="header-para">
+				<p>专为陈赫粉丝设计的网站！薄荷糖们，粉起来，大爱wuli赤赤！</p>	
+			</div>	
+			<ul class="header-in">
+				<li><a href="#">登录</a> </li>
+				<li><a href="#">注册</a> </li>
+				<li><a href="#">设置</a></li>
+				<li ><a href="#" >联系我们</a></li>
+			</ul>
+				<div class="clearfix"> </div>
+		</div>
+		<!---->
+		<div class="logo">
+			<a href="index.html"><img style="algin:center;"src="images/banner.gif" alt="" ></a>
+		</div>
+		<div class="header-bottom">
+			<div class="top-nav">	
+			  <ul class="megamenu skyblue">
+			  	<li><a href="#">看照片</a></li>
+				<li><a href="#">看视频</a></li>
+				<li><a href="#">看生活</a></li>
+				<li><a href="#">看留言</a></li>
+				<li><a href="#">搞事情</a></li>
+			 	<li><a href="#">TianC</a></li>
+			  </ul> 
+			</div>
+		</div>
+		<div class="content">
+        	<div class="col-md-9">
+				<div class="shoe">
+					<img class="img-responsive" src="images/1.jpg" alt="" >
+				</div>
+				<div class="content-bottom">
+					<h3>赤赤星路</h3>
+					<div class="massage-about">
+					<div class="col-md-4 maggage-text">
+						<h4>1995-10-06</h4>
+						<p>你是春天里的那一抹鹅黄，窜上我心灵的枝头，从此，我的生命充满了绿意。沏一壶春色，等你。我们在这个春天，一起盎然。<br>
+                        &nbsp;&nbsp;你每日在爱的小屋里衔泥筑巢，快乐得如一只雌燕，只为等我归巢时那一刻的惊喜。爱，是一种坚持。是平淡的相濡以沫，是寻常的细水长流，是精心的呵护与珍惜。<br>
+                        &nbsp;&nbsp; 有爱的日子，每天都是一朵花开。无数的日子，连接在一起，就会繁花满枝。再过几天，就是相识520天了。爱情，是用来铭记的。<br>
+                        &nbsp;&nbsp;520，我爱你！镌刻在骨头上，融进血液里，烙印在每个细胞中，只因那是灵魂深处的爱。</p>							
+					</div>
+				<div class="col-md-4 maggage-text">
+					<h4>2001-4-3</h4>
+						<p>你是春天里的那一抹鹅黄，窜上我心灵的枝头，从此，我的生命充满了绿意。沏一壶春色，等你。我们在这个春天，一起盎然。<br>
+                        &nbsp;&nbsp;你每日在爱的小屋里衔泥筑巢，快乐得如一只雌燕，只为等我归巢时那一刻的惊喜。爱，是一种坚持。是平淡的相濡以沫，是寻常的细水长流，是精心的呵护与珍惜。<br>
+                        &nbsp;&nbsp; 有爱的日子，每天都是一朵花开。无数的日子，连接在一起，就会繁花满枝。再过几天，就是相识520天了。爱情，是用来铭记的。<br>
+                        &nbsp;&nbsp;520，我爱你！镌刻在骨头上，融进血液里，烙印在每个细胞中，只因那是灵魂深处的爱。</p>							
+					</div>
+				<div class="col-md-4 maggage-text">
+					<h4>2014-12-12</h4>
+						<p>你是春天里的那一抹鹅黄，窜上我心灵的枝头，从此，我的生命充满了绿意。沏一壶春色，等你。我们在这个春天，一起盎然。<br>
+                        &nbsp;&nbsp;你每日在爱的小屋里衔泥筑巢，快乐得如一只雌燕，只为等我归巢时那一刻的惊喜。爱，是一种坚持。是平淡的相濡以沫，是寻常的细水长流，是精心的呵护与珍惜。<br>
+                        &nbsp;&nbsp; 有爱的日子，每天都是一朵花开。无数的日子，连接在一起，就会繁花满枝。再过几天，就是相识520天了。爱情，是用来铭记的。<br>
+                        &nbsp;&nbsp;520，我爱你！镌刻在骨头上，融进血液里，烙印在每个细胞中，只因那是灵魂深处的爱。</p>					
+					</div>
+				</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 col-md">
+			<div class=" possible-about">
+					<h4>主要作品</h4>
+						<div class="tab1">
+							<ul class="place">	
+								<li class="sort">话剧</li>
+								<li class="by"><img src="images/do.png" alt=""></li>
+									<div class="clearfix"> </div>
+							</ul>
+						</div>
+						<div class="tab1">
+							<ul class="place">	
+								<li class="sort">电视剧</span></li>
+								<li class="by"><img src="images/do.png" alt=""></li>
+									<div class="clearfix"> </div>
+							</ul>
+						</div>
+						<div class="tab1">
+							<ul class="place">	
+								<li class="sort">电影</span></li>
+								<li class="by"><img src="images/do.png" alt=""></li>
+									<div class="clearfix"> </div>
+							</ul>
+						</div>
+						<div class="tab1">
+							<ul class="place">	
+								<li class="sort">歌曲</span></li>
+								<li class="by"><img src="images/do.png" alt=""></li>
+									<div class="clearfix"> </div>
+							</ul>
+						</div>
+						<div class="tab1">
+							<ul class="place">	
+								<li class="sort">综艺节目</span></li>
+								<li class="by"><img src="images/do.png" alt=""></li>
+									<div class="clearfix"> </div>
+							</ul>
+						</div>
+					</div>
+					<div class="content-bottom-grid">
+					<h3>最新公告</h3>
+					<form>
+						<table cellspacing="0" cellpadding="0" width="17%">
+							<tr>
+								<td width="100%" colspan="3" valign="top">
+									<div align="center"><p><textarea name="teletype" rows="5" COLS="29" wrap="yes"></textarea> </p></div>
+								</td>
+							</tr>
+							<tr align="center">
+								<td width="40%" valign="top" bgcolor="#ffffff">
+									<input type="button" style="background:url(images/last.png);width:72px;height:48px;"  onClick="lastMessage()" ></td>
+								<td width="30%" bgcolor="#ffffff" valign="top">
+									<input type="button" style="background:url(images/next.png);width:72px;height:48px;"  onClick="nextMessage()"></td>
+							</tr>
+						</table>
+					</form>
+					</div>
+				<div class="money">
+					<h3>精彩图片</h3>
+					<embed src="photo.swf" width="255" height="230" play="true" loop="false" quality="high" type="application/x-shockwave-flash"></embed>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div> 	
+	 </div>
+</body>
+</html>
